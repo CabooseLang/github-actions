@@ -1,7 +1,7 @@
 const core = require("@actions/core");
 const path = require("path");
 
-const WORKSPACE = process.env.GITHUB_WORKSPSACE;
+const WORKSPACE = process.env.GITHUB_WORKSPACE;
 
 async function run() {
   try {
