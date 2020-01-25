@@ -1,0 +1,14 @@
+name: "Configure CMake Project"
+description: "Configure a project based on CMake"
+inputs:
+  options:
+    description: "Extra CMake options"
+    required: false
+    default: ""
+  build_dir:
+    description: "The directory to store build files in"
+    required: true
+    default: ""
+runs:
+  using: "node12"
+  main: "index.js"
