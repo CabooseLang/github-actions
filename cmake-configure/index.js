@@ -2,6 +2,8 @@ const core = require("@actions/core");
 const io = require("@actions/io");
 const exec = require("@actions/exec");
 
+const fs = require('fs');
+
 async function run() {
   try {
     // Get extra command line options for CMake
@@ -12,9 +14,13 @@ async function run() {
     await io.mkdirP(buildDirectory);
     process.chdir(buildDirectory);
 
+    // Check if source directory exists
+    const sourceDirectory = core.getInput("source_dir");
+    if (fs.existsSync(sourceDirectory)) return core.setFailed("Source directory does not exist.");
+
     // Configure CMake
     core.startGroup("Configure");
-    await exec.exec(`cmake ../ ${options}`);
+    await exec.exec(`cmake -S ${sourceDirectory} -B ./ ${options}`);
     core.endGroup();
   } catch (e) {
     core.setFailed(e.message);
