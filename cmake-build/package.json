@@ -1,0 +1,14 @@
+{
+    "name": "cmake-build",
+    "version": "1.0.0",
+    "description": "GitHub action to build a CMake-based project",
+    "main": "index.js",
+    "keywords": [],
+    "author": "Landon Gravat",
+    "license": "MIT",
+    "dependencies": {
+        "@actions/core": "^1.2.0",
+        "@actions/exec": "^1.0.1",
+        "@actions/io": "^1.0.1"
+    }
+}
