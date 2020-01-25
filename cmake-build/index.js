@@ -2,10 +2,13 @@ const core = require("@actions/core");
 const exec = require("@actions/exec");
 
 const fs = require("fs");
+const path = require("path");
+
+const WORKSPACE = process.env.GITHUB_WORKSPSACE;
 
 async function run() {
   try {
-    const buildDirectory = core.getInput("build_dir");
+    const buildDirectory = path.resolve(WORKSPACE, core.getInput("build_dir"));
 
     if (!fs.existsSync(buildDirectory))
       return core.setFailed("Build directory does not exist.");

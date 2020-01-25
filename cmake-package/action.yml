@@ -1,0 +1,14 @@
+name: "Package CMake Project"
+description: "Package a project based on CMake"
+inputs:
+  build_dir:
+    description: "Directory where CMake build files are located."
+    required: true
+    default: "build"
+  package_type:
+    description: "Type of installer to build"
+    required: false
+    default: "zip"
+runs:
+  using: "node12"
+  main: "index.js"

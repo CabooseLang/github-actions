@@ -3,6 +3,9 @@ const io = require("@actions/io");
 const exec = require("@actions/exec");
 
 const fs = require("fs");
+const path = require("path");
+
+const WORKSPACE = process.env.GITHUB_WORKSPSACE;
 
 async function run() {
   try {
@@ -10,19 +13,21 @@ async function run() {
     let options = core.getInput("options");
 
     // Setup the build directory and cd in
-    const buildDirectory = core.getInput("build_dir");
+    const buildDirectory = path.resolve(WORKSPACE, core.getInput("build_dir"));
     await io.mkdirP(buildDirectory);
 
     // Check if source directory exists
-    const sourceDirectory = core.getInput("source_dir");
+    const sourceDirectory = path.resolve(
+      WORKSPACE,
+      core.getInput("source_dir")
+    );
+    
     if (!fs.existsSync(sourceDirectory))
       return core.setFailed("Source directory does not exist.");
 
     // Configure CMake
     core.startGroup("Configure");
-    await exec.exec(
-      `cmake ${sourceDirectory} -B${buildDirectory} ${options}`
-    );
+    await exec.exec(`cmake ${sourceDirectory} -B${buildDirectory} ${options}`);
     core.endGroup();
   } catch (e) {
     core.setFailed(e.message);
