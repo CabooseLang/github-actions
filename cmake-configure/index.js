@@ -1,5 +1,6 @@
 const core = require("@actions/core");
 const io = require("@actions/io");
+const exec = require("@actions/exec");
 
 async function run() {
   try {
