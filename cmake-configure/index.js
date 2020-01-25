@@ -8,6 +8,8 @@ const WORKSPACE = process.env.GITHUB_WORKSPACE;
 
 async function run() {
   try {
+    core.info(WORKSPACE);
+
     // Get extra command line options for CMake
     let options = core.getInput("options");
 
