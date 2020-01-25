@@ -2,7 +2,7 @@ const core = require("@actions/core");
 const io = require("@actions/io");
 const exec = require("@actions/exec");
 
-const fs = require('fs');
+const fs = require("fs");
 
 async function run() {
   try {
@@ -12,15 +12,17 @@ async function run() {
     // Setup the build directory and cd in
     const buildDirectory = core.getInput("build_dir");
     await io.mkdirP(buildDirectory);
-    process.chdir(buildDirectory);
 
     // Check if source directory exists
     const sourceDirectory = core.getInput("source_dir");
-    if (fs.existsSync(sourceDirectory)) return core.setFailed("Source directory does not exist.");
+    if (fs.existsSync(sourceDirectory))
+      return core.setFailed("Source directory does not exist.");
 
     // Configure CMake
     core.startGroup("Configure");
-    await exec.exec(`cmake -S ${sourceDirectory} -B ./ ${options}`);
+    await exec.exec(
+      `cmake -S ${sourceDirectory} -B ${buildDirectory} ${options}`
+    );
     core.endGroup();
   } catch (e) {
     core.setFailed(e.message);
