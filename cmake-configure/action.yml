@@ -9,7 +9,7 @@ inputs:
     description: "The directory to store build files in"
     required: true
     default: ""
-  build_dir:
+  source_dir:
     description: "The directory the source files are in"
     required: true
     default: ""
