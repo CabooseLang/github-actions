@@ -9,10 +9,6 @@ inputs:
     description: "The directory to store build files in"
     required: true
     default: ""
-  source_dir:
-    description: "The directory the source files are in"
-    required: true
-    default: ""
 runs:
   using: "node12"
   main: "index.js"
