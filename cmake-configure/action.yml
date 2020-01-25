@@ -7,8 +7,8 @@ inputs:
     default: ""
   build_dir:
     description: "The directory to store build files in"
-    required: true
-    default: ""
+    required: false
+    default: "build"
 runs:
   using: "node12"
   main: "index.js"

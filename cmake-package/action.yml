@@ -3,7 +3,7 @@ description: "Package a project based on CMake"
 inputs:
   build_dir:
     description: "Directory where CMake build files are located."
-    required: true
+    required: false
     default: "build"
   package_type:
     description: "Type of installer to build"

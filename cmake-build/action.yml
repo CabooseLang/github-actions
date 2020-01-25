@@ -1,10 +1,10 @@
-name: 'Build CMake Project'
-description: 'Build a project based on CMake'
+name: "Build CMake Project"
+description: "Build a project based on CMake"
 inputs:
   build_dir:
-    description: 'Directory where CMake build files are located.'
-    required: true
-    default: 'build'
+    description: "Directory where CMake build files are located."
+    required: false
+    default: "build"
 runs:
-  using: 'node12'
-  main: 'index.js'
+  using: "node12"
+  main: "index.js"
