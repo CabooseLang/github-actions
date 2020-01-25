@@ -15,7 +15,7 @@ async function run() {
 
     // Check if source directory exists
     const sourceDirectory = core.getInput("source_dir");
-    if (fs.existsSync(sourceDirectory))
+    if (!fs.existsSync(sourceDirectory))
       return core.setFailed("Source directory does not exist.");
 
     // Configure CMake
