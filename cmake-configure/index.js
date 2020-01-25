@@ -21,7 +21,7 @@ async function run() {
     // Configure CMake
     core.startGroup("Configure");
     await exec.exec(
-      `cmake -S${sourceDirectory} -B${buildDirectory} ${options}`
+      `cmake ${sourceDirectory} -B${buildDirectory} ${options}`
     );
     core.endGroup();
   } catch (e) {
