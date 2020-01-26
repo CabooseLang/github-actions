@@ -11,8 +11,11 @@ async function run() {
     core.startGroup("Package");
     process.chdir(buildDir);
     await exec.exec(`cpack -G ${packageType.toUpperCase()}`);
+    process.chdir(WORKSPACE);  
     core.endGroup();
-  } catch (e) {}
+  } catch (e) {
+    core.setFailed(e.message);
+  }
 }
 
 run();
