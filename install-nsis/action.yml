@@ -1,0 +1,5 @@
+name: "Install NSIS"
+description: "Install NSIS"
+runs:
+  using: "node12"
+  main: "index.js"
